@@ -72,12 +72,17 @@ def dashboard(request):
         'question_5_privacy'
     ]
 
+    opt1 = response_map['question_3_waiting_times_length']['less-than-an-hour']
+    opt2 = response_map['question_3_waiting_times_length'][
+        'between-1-and-3-hours']
+    opt3 = response_map['question_3_waiting_times_length']['more-than-4-hours']
+    opt4 = response_map['question_3_waiting_times_length']['all-day']
     waiting_times = {
         'less_than_an_hour': round(
-            (response_map['question_3_waiting_times_length']['less-than-an-hour'] / num_ratings * 100), 1),
-        'between_1_and_3_hours': round((response_map['question_3_waiting_times_length']['between-1-and-3-hours'] / num_ratings * 100), 1),
-        'more_than_4_hours': round((response_map['question_3_waiting_times_length']['more-than-4-hours'] / num_ratings * 100), 1),
-        'all_day': round((response_map['question_3_waiting_times_length']['all-day'] / num_ratings * 100), 1)
+            (opt1 / num_ratings * 100), 1),
+        'between_1_and_3_hours': round((opt2 / num_ratings * 100), 1),
+        'more_than_4_hours': round((opt3 / num_ratings * 100), 1),
+        'all_day': round((opt4 / num_ratings * 100), 1)
     }
 
     for question in averages_questions:
