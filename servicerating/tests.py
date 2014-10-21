@@ -45,9 +45,6 @@ class ServiceRatingResourceTest(ResourceTestCase):
             self.api_client.get('/api/v1/servicerating/useraccount/',
                                 format='json'))
 
-    def test_api_keys_created(self):
-        self.assertEqual(True, self.api_key is not None)
-
     def test_get_useraccount_list_json(self):
         resp = self.api_client.get(
             '/api/v1/servicerating/useraccount/', format='json',
