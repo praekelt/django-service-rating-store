@@ -1,7 +1,7 @@
 from django.contrib import admin
 from servicerating.models import Contact, Conversation, Response
 from servicerating.models import UserAccount, Extra
-from control.actions import export_select_fields_csv_action
+from servicerating.actions import export_select_fields_csv_action
 
 
 class ContactAdmin(admin.ModelAdmin):
