@@ -101,6 +101,7 @@ class ExtraResource(ModelResource):
 
 
 class ServiceRatingObject(object):
+
     """
     We need a generic object to shove data in/get data from. This is it.
     TastyPie will then hydrate it from the inbound request.
@@ -124,11 +125,12 @@ class ServiceRatingObject(object):
 
 
 class ServiceRatingResource(Resource):
+
     """
     A custom TastyPie Resource that exists to allow one inbound
     request to populate many models and reduce complexity
     """
-    
+
     # Just like a Django ``Form`` or ``Model``, we're defining all the
     # fields we're going to handle with the API here.
     user_account = fields.CharField(attribute='user_account')
