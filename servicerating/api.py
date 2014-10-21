@@ -1,10 +1,13 @@
+import logging
+
 from tastypie import fields
 from tastypie.resources import ModelResource, Resource, ALL, Bundle
 from tastypie.authentication import ApiKeyAuthentication
 from tastypie.authorization import Authorization
+
 from servicerating.models import Contact, Conversation, Response
 from servicerating.models import UserAccount, Extra
-import logging
+
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
