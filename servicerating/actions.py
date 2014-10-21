@@ -3,13 +3,14 @@ from django.http import HttpResponse
 
 
 # From http://djangosnippets.org/snippets/2712/
-def export_select_fields_csv_action(description="Export selected objects as CSV file",
-                         fields=None, exclude=None, header=True):
+def export_select_fields_csv_action(
+        description="Export selected objects as CSV file",
+        fields=None, exclude=None, header=True):
     """
     This function returns an export csv action
 
-    'fields' is a list of tuples denoting the field and label to be exported. Labels
-    make up the header row of the exported file if header=True.
+    'fields' is a list of tuples denoting the field and label to be exported.
+    Labels make up the header row of the exported file if header=True.
 
         fields=[
                 ('field1', 'label1'),
@@ -52,7 +53,7 @@ def export_select_fields_csv_action(description="Export selected objects as CSV 
                 writer.writerow(field_names)
         for obj in queryset:
             writer.writerow([unicode(getattr(obj, field)).encode('utf-8')
-                            for field in field_names])
+                             for field in field_names])
         return response
     export_as_csv.short_description = description
     return export_as_csv
