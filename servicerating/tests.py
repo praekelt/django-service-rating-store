@@ -4,7 +4,7 @@ Tests for Service Rating Application
 from tastypie.test import ResourceTestCase
 from django.contrib.auth.models import User
 from servicerating.models import Contact, Conversation
-from servicerating.models import Response, UserAccount, Extra
+from servicerating.models import Response, UserAccount
 from tastypie.models import ApiKey
 import json
 
@@ -29,16 +29,16 @@ class ServiceRatingResourceTest(ResourceTestCase):
 
     def test_data_loaded(self):
         self.assertEqual({
-                "accounts": 1, 
-                "conversations": 1,
-                "contacts": 2,
-                "responses": 2
-            }, {
-                "accounts": UserAccount.objects.all().count(),
-                "conversations": Conversation.objects.all().count(),
-                "contacts": Contact.objects.all().count(),
-                "responses": Response.objects.all().count()
-            })
+            "accounts": 1,
+            "conversations": 1,
+            "contacts": 2,
+            "responses": 2
+        }, {
+            "accounts": UserAccount.objects.all().count(),
+            "conversations": Conversation.objects.all().count(),
+            "contacts": Contact.objects.all().count(),
+            "responses": Response.objects.all().count()
+        })
 
     def test_get_list_unauthorzied(self):
         self.assertHttpUnauthorized(
