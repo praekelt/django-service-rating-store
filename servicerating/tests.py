@@ -28,16 +28,17 @@ class ServiceRatingResourceTest(ResourceTestCase):
         return self.create_apikey(self.username, self.api_key)
 
     def test_data_loaded(self):
-        useraccounts = UserAccount.objects.all()
-        self.assertEqual(useraccounts.count(), 1)
-        conversations = Conversation.objects.all()
-        self.assertEqual(conversations.count(), 1)
-        contacts = Contact.objects.all()
-        self.assertEqual(contacts.count(), 2)
-        extras = Extra.objects.all()
-        self.assertEqual(extras.count(), 2)
-        responses = Response.objects.all()
-        self.assertEqual(responses.count(), 2)
+        self.assertEqual({
+                "accounts": 1, 
+                "conversations": 1,
+                "contacts": 2,
+                "responses": 2
+            }, {
+                "accounts": UserAccount.objects.all().count(),
+                "conversations": Conversation.objects.all().count(),
+                "contacts": Contact.objects.all().count(),
+                "responses": Response.objects.all().count()
+            })
 
     def test_get_list_unauthorzied(self):
         self.assertHttpUnauthorized(
