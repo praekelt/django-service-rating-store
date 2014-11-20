@@ -77,21 +77,32 @@ def dashboard(request):
         'between-1-and-3-hours']
     opt3 = response_map['question_3_waiting_times_length']['more-than-4-hours']
     opt4 = response_map['question_3_waiting_times_length']['all-day']
-    waiting_times = {
-        'less_than_an_hour': round(
-            (opt1 / num_ratings * 100), 1),
-        'between_1_and_3_hours': round((opt2 / num_ratings * 100), 1),
-        'more_than_4_hours': round((opt3 / num_ratings * 100), 1),
-        'all_day': round((opt4 / num_ratings * 100), 1)
-    }
+    if num_ratings == 0:
+        waiting_times = {
+            'less_than_an_hour': 0,
+            'between_1_and_3_hours': 0,
+            'more_than_4_hours': 0,
+            'all_day': 0
+        }
+    else:
+        waiting_times = {
+            'less_than_an_hour': round(
+                (opt1 / num_ratings * 100), 1),
+            'between_1_and_3_hours': round((opt2 / num_ratings * 100), 1),
+            'more_than_4_hours': round((opt3 / num_ratings * 100), 1),
+            'all_day': round((opt4 / num_ratings * 100), 1)
+        }
 
     for question in averages_questions:
-        averages[question] = round((
-            (response_map[question]['very-satisfied'] * 4) +
-            (response_map[question]['satisfied'] * 3) +
-            (response_map[question]['not-satisfied'] * 2) +
-            (response_map[question]['very-unsatisfied'] * 1)
-        ) / num_ratings, 1)
+        if num_ratings == 0:
+            averages[question] = 0
+        else:
+            averages[question] = round((
+                (response_map[question]['very-satisfied'] * 4) +
+                (response_map[question]['satisfied'] * 3) +
+                (response_map[question]['not-satisfied'] * 2) +
+                (response_map[question]['very-unsatisfied'] * 1)
+            ) / num_ratings, 1)
 
     context = {
         'averages': averages,
