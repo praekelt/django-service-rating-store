@@ -109,7 +109,7 @@ def dashboard(request):
         'waiting_times': waiting_times
     }
 
-    return render(request, 'admin/servicerating/dashboard.html', context)
+    return render(request, 'servicerating/admin/servicerating/dashboard.html', context)
 
 
 def report_responses(request):
