@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="django-service-rating-store",
-    version="0.3.0a",
+    version="0.3.0b",
     url='https://github.com/praekelt/django-service-rating-store',
     license='BSD',
     description=(
